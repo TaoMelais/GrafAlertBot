@@ -17,7 +17,6 @@ const client = new Client({
 const CHANNEL_ID = process.env.CHANNEL_ID;
 const PORT = process.env.PORT || 4000;
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
-const ROLE_ID = process.env.ROLE_ID || null;
 const NAME_BOT = process.env.NAME_BOT;
 
 // Discord ready
@@ -63,12 +62,9 @@ app.post('/grafana', async (req, res) => {
             });
         }
 
-        // Envoi dans Discord
+        // Envoi dans Discord sans rôle
         if (channel) {
-            const content = (ROLE_ID && (status.toLowerCase() === 'firing' || status.toLowerCase() === 'alerting'))
-                ? `<@&${ROLE_ID}>`
-                : null;
-            await channel.send({ content, embeds: [embed] });
+            await channel.send({ embeds: [embed] });
         }
 
         console.log(`✅ Alerte envoyée : ${title} [${status}]`);
