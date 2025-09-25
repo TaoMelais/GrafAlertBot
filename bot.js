@@ -17,7 +17,7 @@ const client = new Client({
 const CHANNEL_ID = process.env.CHANNEL_ID;
 const PORT = process.env.PORT || 4000;
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
-// const ROLE_ID = process.env.ROLE_ID || null;
+const ROLE_ID = process.env.ROLE_ID || null;
 const NAME_BOT = process.env.NAME_BOT;
 
 // Discord ready
